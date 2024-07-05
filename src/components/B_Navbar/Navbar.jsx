@@ -38,7 +38,7 @@ function Navbar() {
                 Home
               </Link>
               <Link
-                to="/Product"
+                to="/Products"
                 href="#"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
               >
@@ -94,7 +94,7 @@ function Navbar() {
               {isUserDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2">
                   <Link
-                    to="/User"
+                    to="/users"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Profile

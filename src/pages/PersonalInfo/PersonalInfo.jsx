@@ -5,8 +5,10 @@ import LoginAndSecurity from "../../components/E_LoginAndSecurity/LoginAndSecuri
 import MyPayment from "../../components/E_MyPayment/MyPayment";
 import PersonalInfo from "../../components/E_PersonalInfo/PersonalInfo";
 import TrackingOrders from "../../components/E_TrackingOrders/TrackingOrders";
+import Navbar from "../../components/B_Navbar/Navbar";
+import Footer from "../../components/B_Footer/Footer";
 
-const PersonalInfo = () => {
+const UserInfo = () => {
   return (
     <div>
       <Navbar />
@@ -19,15 +21,15 @@ const PersonalInfo = () => {
           <Dropdown />
           <div className="flex flex-col gap-10">
             <PersonalInfo
-              errors={validateError}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
+            // errors={validateError}
+            // handleChange={handleChange}
+            // handleSubmit={handleSubmit}
             />
             <LoginAndSecurity />
             <MyPayment
-              errors={validateError}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
+            // errors={validateError}
+            // handleChange={handleChange}
+            // handleSubmit={handleSubmit}
             />
             <TrackingOrders />
           </div>
@@ -38,4 +40,4 @@ const PersonalInfo = () => {
   );
 };
 
-export default PersonalInfo;
+export default UserInfo;

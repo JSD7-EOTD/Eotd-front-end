@@ -1,10 +1,10 @@
 import React from "react";
 import "boxicons";
 
-const MyPayment = ({ errors, handleChange, handleSubmit }) => {
+const MyPayment = () => {
   return (
     <div className="container mx-auto">
-      <form className="px-4 py-4 flex flex-col gap-5" onSubmit={handleSubmit}>
+      <form className="px-4 py-4 flex flex-col gap-5">
         {/* Payment meothods*/}
         <div className="flex flex-col justify-between pt-3 space-y-4 ">
           {/* Main Heading */}
@@ -54,11 +54,10 @@ const MyPayment = ({ errors, handleChange, handleSubmit }) => {
               name="cardNumber"
               placeholder="Enter your card number"
               className="input input-bordered w-full  bg-white border-2 px-5 py-2 rounded-xl"
-              onChange={handleChange}
             />
-            {errors.cardNumber && (
+            {/* {errors.cardNumber && (
               <span className="text-red-500">{errors.cardNumber}</span>
-            )}
+            )} */}
           </label>
 
           {/* Card Name Input */}
@@ -70,11 +69,10 @@ const MyPayment = ({ errors, handleChange, handleSubmit }) => {
               name="cardName"
               placeholder="Enter your card name"
               className="input input-bordered w-full  bg-white border-2 px-5 py-2 rounded-xl"
-              onChange={handleChange}
             />
-            {errors.cardName && (
+            {/* {errors.cardName && (
               <span className="text-red-500">{errors.cardName}</span>
-            )}
+            )} */}
           </label>
 
           {/* Expiration Date and CVC Inputs */}
@@ -88,22 +86,20 @@ const MyPayment = ({ errors, handleChange, handleSubmit }) => {
                 pattern="\d{2}/\d{2}"
                 placeholder="MM/YY"
                 name="expirationDate"
-                onChange={handleChange}
                 className="border-2 p-2 rounded-lg w-full  bg-white "
               />
-              {errors.expirationDate && (
+              {/* {errors.expirationDate && (
                 <span className="text-red-500">{errors.cardName}</span>
-              )}
+              )} */}
             </label>
             <label className="w-full  pb-3">
               <span className="font-bold text-gray-600]">CVC</span>
               <input
                 type="number"
                 name="cvc"
-                onChange={handleChange}
                 className="border-2 p-2 rounded-lg w-full  bg-white "
               />
-              {errors.cvc && <span className="text-red-500">{errors.cvc}</span>}
+              {/* {errors.cvc && <span className="text-red-500">{errors.cvc}</span>} */}
             </label>
           </div>
 

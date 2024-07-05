@@ -1,9 +1,9 @@
 import React from "react";
 
-const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
+const PersonalInfo = () => {
   return (
     <div className="container mx-auto ">
-      <form className="px-4 py-4 flex flex-col gap-5" onSubmit={handleSubmit}>
+      <form className="px-4 py-4 flex flex-col gap-5">
         {/* Personal Info & View profile */}
 
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
@@ -31,11 +31,10 @@ const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
               name="displayName"
               placeholder="Enter your display name"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white"
-              onChange={handleChange}
             />
-            {errors.displayName && (
+            {/* {errors.displayName && (
               <span className="text-red-500">{errors.displayName}</span>
-            )}
+            )} */}
           </div>
 
           <div className="w-full">
@@ -47,11 +46,10 @@ const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
               name="fullName"
               placeholder="Enter your full name"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white"
-              onChange={handleChange}
             />
-            {errors.fullName && (
+            {/* {errors.fullName && (
               <span className="text-red-500">{errors.fullName}</span>
-            )}
+            )} */}
           </div>
 
           <div className="w-full">
@@ -61,11 +59,10 @@ const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
               name="phone"
               placeholder="Phone number"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white"
-              onChange={handleChange}
             />
-            {errors.phone && (
+            {/* {errors.phone && (
               <span className="text-red-500">{errors.phone}</span>
-            )}
+            )} */}
           </div>
 
           <div className="w-full">
@@ -75,11 +72,10 @@ const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
               name="email"
               placeholder="example@gmail.com"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white"
-              onChange={handleChange}
             />
-            {errors.email && (
+            {/* {errors.email && (
               <span className="text-red-500">{errors.email}</span>
-            )}
+            )} */}
           </div>
 
           <div className="w-full">
@@ -91,11 +87,10 @@ const PersonalInfo = ({ errors, handleChange, handleSubmit }) => {
               name="address"
               placeholder="Enter your address"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white"
-              onChange={handleChange}
             />
-            {errors.address && (
+            {/* {errors.address && (
               <span className="text-red-500">{errors.address}</span>
-            )}
+            )} */}
           </div>
         </div>
         {/* BTN Update & Clear all */}

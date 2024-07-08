@@ -128,14 +128,14 @@ export function Addbutton() {
         <div className="flex items-center space-x-4 mt-10 justify-center md:justify-start">
         <button
             onClick={decreaseQuantity}
-            className="text-yellow-700 bg-stone-300 lg:text-xl rounded-3xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 w-[54px] h-[54px]"
+            className="text-yellow-700 bg-stone-300 lg:text-xl rounded-3xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 w-[54px] h-[54px]"
         >
             -
         </button>
         <p>{quantity}</p>
         <button
             onClick={increaseQuantity}
-            className="text-yellow-700 bg-stone-300 lg:text-xl rounded-3xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 w-[54px] h-[54px]"
+            className="text-yellow-700 bg-stone-300 lg:text-xl rounded-3xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 w-[54px] h-[54px]"
         >
             +
         </button>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "boxicons";
-import { MatRender, Options, Addbutton } from './Dis_render';
+import { MatRender, Options, Addbutton } from './DisRender';
 
 
 export default function Displays() {

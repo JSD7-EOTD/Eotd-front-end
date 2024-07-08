@@ -9,17 +9,15 @@ import ReviewSection from "../../components/C_ReviewSection/ReviewsSection"
 const DisplayProduct = () => {
   return (
     <div>
-      <div>
-        <Navbar />
-      </div>
+    <Navbar />
+    <div className="mt-28">
       <Displays />
       <Description />
       <ReviewSection />
       {/*<Suggest />*/}
-      <div>
-        <Footer />
-      </div>
     </div>
+    <Footer />
+  </div>
   );
 };
 

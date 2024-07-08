@@ -3,6 +3,7 @@ import ProductPage from "./pages/Product/Product";
 import UserInfo from "./pages/PersonalInfo/PersonalInfo";
 import Home from './pages/Home/Home';
 import DisplayProduct from "./pages/DisplayProduct/DisplayProduct";
+import Register from "./pages/Register/Register";
 
 
 function Router() {
@@ -12,7 +13,8 @@ function Router() {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/users" element={<UserInfo />} />
         <Route path="/display" element={<DisplayProduct />} />
-        <Route path="/" element={<Home/>} />      
+        <Route path="/" element={<Home/>} />     
+        <Route path="/regis" element={<Register/>}/> 
       </Routes>
     </BrowserRouter>
   );

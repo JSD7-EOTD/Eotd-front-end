@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../../context/productsContext";
 
 
-
-function CardMapping({children}) {
+function CardMapping() {
+  const {productList} = useContext(ProductContext)
+  console.log(productList)
   return (
     <div className="pt-8 flex flex-wrap justify-center lg:justify-between lg:items-between ">
       {productList.map((product) => (

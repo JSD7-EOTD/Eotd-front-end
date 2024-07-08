@@ -30,7 +30,7 @@ const CreateAccount = () => {
               name="email"
             //   onChange={handleChange}
               placeholder="Type your e-mail"
-              class="bg-slate-100 rounded p-2 w-full"
+              className="bg-slate-100 rounded p-2 w-full"
             />
             {/* {errors.email && <span className="text-red-500">{errors.email}</span>} */}
           </div>

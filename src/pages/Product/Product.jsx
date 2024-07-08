@@ -8,10 +8,9 @@ import ChangePage from '../../components/B_Pagination/Pagination'
 import Footer from '../../components/B_Footer/Footer'
 
 
+
 const ProductPage = () => {
   
- 
-
   return (
     <div>
       <Navbar />
@@ -24,7 +23,7 @@ const ProductPage = () => {
           <FilterMobile />
         </div>
         <div className="w-full lg:w-[1168px]">
-          {/* <CardMapping productList={productList}/> */}
+          <CardMapping />
         </div>
       </div>
       <div className="w-full flex justify-center">

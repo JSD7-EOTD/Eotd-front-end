@@ -1,3 +1,3 @@
 import axios from '../services/axios'
 
-export const getAllProduct = (data) => axios.get("/")
+export const getAllProduct = () => axios.get("/Products")

@@ -12,7 +12,7 @@ const  Video = () => {
 
             <div className="my-8 md:my-16 lg:my-16">
                 <img
-                src={Video_3}
+                src={Video_3}              
                 alt="Video thumbnail"
                 className="mx-auto  lg:px-40 xl:px-40 2xl:px-40"
             />

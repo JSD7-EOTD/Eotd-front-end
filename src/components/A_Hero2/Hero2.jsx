@@ -3,7 +3,7 @@ const Hero2 = () => {
         <div className="flex flex-col md:flex-row justify-center gap-5   lg:px-40 2xl:px-40  ">
         <div className=" w-full md:w-1/2 p-5 md:pr-20 md:pl-0  content-center ">
             <img
-            src="../../public/images/A1/Hero2_Dog.png"
+            src="../../../public/images/A1/Hero2_Dog.png"
             alt="Hero2 Dog"
             className="object-center w-full sm:justify-items-center
             md:justify-items-center md:content-center"

@@ -11,7 +11,7 @@ const  Video = () => {
 
             <div className="my-8 md:my-16 lg:my-16">
                 <img
-                src="../../public/images/A1/vdo.png"
+                src="../../../public/images/A1/vdo.png"
                 alt="Video thumbnail"
                 className="mx-auto  lg:px-40 xl:px-40 2xl:px-40"
             />

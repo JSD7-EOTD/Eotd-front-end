@@ -1,11 +1,11 @@
-//import React from "react";
+import Hero_1 from '../../../public/images/A1/Hero_1 Cat.png'
 
 const Hero1 = () => {
   return (
     <section className="mt-24 relative flex justify-center items-center z-10 h-[700px] lg:px-36 md:px-16 sm:px-8 px-4 md:bg-contain sm:bg-contain  lg:bg-contain sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full max-w-full ">
       <div className="absolute inset-0 lg:px-36 md:px-16 sm:px-8 px-4 md:bg-contain sm:bg-contain  lg:bg-contain sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full max-w-full h-auto">
         <img
-          src="../../public/images/A1/Hero_1 Cat.png"
+          src={Hero_1}
           className="w-full h-full object-cover  "
           alt="Cat"
         />

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductPage from "./pages/Product/Product";
 import UserInfo from "./pages/PersonalInfo/PersonalInfo";
 import Home from './pages/Home/Home';
@@ -12,7 +12,6 @@ import Register from "./pages/Register/Register";
 
 function Router() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/Products" element={<ProductPage />} />
         <Route path="/users" element={<UserInfo />} />
@@ -23,7 +22,6 @@ function Router() {
         <Route path="/login" element={<Loginpage />} />
         <Route path="/regis" element={<Register/>}/> 
       </Routes>
-    </BrowserRouter>
   );
 }
 

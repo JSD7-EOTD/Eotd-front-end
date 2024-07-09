@@ -56,6 +56,12 @@ function Navbar() {
               >
                 Contact
               </a>
+              <a
+                href="#"
+                className="hidden text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
+              >
+                Admin
+              </a>
             </nav>
           </div>
           <div className="hidden md:flex items-center space-x-4 relative">

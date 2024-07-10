@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "boxicons";
 import logoGradient from "../../../public/images/icon/logoGradient.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchBarOpen, setSearchBarOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,6 +21,10 @@ function Navbar() {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const toggleCartDropdown = () => {
+    setIsCartDropdownOpen(!isCartDropdownOpen);
   };
 
   return (
@@ -32,14 +40,12 @@ function Navbar() {
             <nav className=" hidden md:flex space-x-1 lg:space-x-4">
               <Link
                 to="/"
-                href="#"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
               >
                 Home
               </Link>
               <Link
                 to="/Products"
-                href="#"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
               >
                 Product
@@ -84,12 +90,49 @@ function Navbar() {
             </div>
           </div>
           <div className="flex items-center xl:space-x-4 lg:space-x-3 md:space-x-2 sm:space-x-1 space-x-0.5 relative">
-            <Link
-              to="/Cart"
-              className="btn btn-ghost btn-circle text-info-content"
-            >
-              <box-icon name="cart"></box-icon>
-            </Link>
+            <div className="relative">
+              <button
+                className="btn btn-ghost btn-circle text-info-content"
+                onClick={toggleCartDropdown}
+              >
+                <box-icon name="cart"></box-icon>
+                {cartItems.length > 0 && (
+                  <span className="badge badge-sm indicator-item">{cartItems.length}</span>
+                )}
+              </button>
+              {isCartDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-lg py-2">
+                  <h2 className="text-lg font-bold px-4 py-2 border-b">Cart Items</h2>
+                  {cartItems.length === 0 ? (
+                    <p className="px-4 py-2">Your cart is empty.</p>
+                  ) : (
+                    <div>
+                      {cartItems.map((item) => (
+                        <div key={item.id} className="flex items-center justify-between px-4 py-2 border-b">
+                          <div>
+                            <p className="text-sm font-medium">{item.name}</p>
+                            <p className="text-sm text-gray-500">{item.new_price}$</p>
+                          </div>
+                          <button
+                            className="text-red-500 hover:text-red-700"
+                            onClick={() => removeFromCart(item.id)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+                      <Link
+                        to="/Cart"
+                        className="block text-center bg-yellow-700 text-white px-4 py-2 rounded hover:bg-yellow-800 transition duration-300 mt-2"
+                        onClick={toggleCartDropdown}
+                      >
+                        View Cart
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             <div className="relative">
               <button
                 className="btn btn-ghost btn-circle text-info-content"

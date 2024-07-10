@@ -191,18 +191,18 @@ function Navbar() {
                   <box-icon name="search" size="sm"></box-icon>
                 </button>
               </div>
-              <a
-                href="#"
+              <Link
+                to ="/"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Home
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to ="/Products"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Product
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"

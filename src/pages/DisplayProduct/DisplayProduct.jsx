@@ -12,7 +12,7 @@ const DisplayProduct = () => {
     <Navbar />
     <div className="mt-28">
       <Displays />
-      <Description />
+      {/* <Description /> */}
       <ReviewSection />
       {/*<Suggest />*/}
     </div>

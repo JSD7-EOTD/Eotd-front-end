@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { Link } from "react-router-dom";
 
 const LoginComponent = () => {
   const schema = Joi.object({
@@ -113,7 +114,7 @@ const LoginComponent = () => {
         <div>
           <p>
             Don't have an account?
-            <a href="" className="text-black">Sign Up</a>
+            <Link to="/regis" className="text-black">Sign Up</Link>
           </p>
         </div>
       </div>

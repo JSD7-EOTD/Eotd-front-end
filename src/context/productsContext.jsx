@@ -9,7 +9,7 @@ const ProductContext = createContext();
 
 function ProductContextProvider({ children }) {
     const [productList, setProductList] = useState([]);
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     useEffect(() => {
     const getAllProducts = async () =>{
@@ -17,7 +17,7 @@ function ProductContextProvider({ children }) {
             const res = await productApi.getAllProduct()
             const products = res.data
             setProductList(products)
-        navigate('/Products')
+        // navigate('/Products')
         } catch (error) {
             console.log(error)
         }

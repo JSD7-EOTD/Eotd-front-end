@@ -1,3 +1,4 @@
+import Video_3 from '../../../public/images/A1/vdo.png'
 const  Video = () => {
     return (
     <section className="container mx-auto px-4 sm:px-10 md:px-10 lg:px-10 my-8 md:my-16 lg:my-16 xl:px-10 2xl:px-10">
@@ -11,7 +12,7 @@ const  Video = () => {
 
             <div className="my-8 md:my-16 lg:my-16">
                 <img
-                src="../../../public/images/A1/vdo.png"
+                src={Video_3}              
                 alt="Video thumbnail"
                 className="mx-auto  lg:px-40 xl:px-40 2xl:px-40"
             />

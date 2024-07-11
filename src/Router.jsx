@@ -8,15 +8,17 @@ import Loginpage from "./pages/Login/Login"
 
 import DisplayProduct from "./pages/DisplayProduct/DisplayProduct";
 import Register from "./pages/Register/Register";
+import CartPage from "./pages/Cart/CartPage";
 
 
 function Router() {
   return (
       <Routes>
+        <Route path="/" element={<Home/>} />     
         <Route path="/Products" element={<ProductPage />} />
         <Route path="/users" element={<UserInfo />} />
-        <Route path="/display" element={<DisplayProduct />} />
-        <Route path="/" element={<Home/>} />     
+        <Route path="/Products/:_id" element={<DisplayProduct />} />
+        <Route path="/Cart" element={<CartPage /> } />
         <Route path="/status" element={<SuccessPage />} />
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/login" element={<Loginpage />} />

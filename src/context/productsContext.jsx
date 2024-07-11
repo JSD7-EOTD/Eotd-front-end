@@ -1,40 +1,34 @@
-import { useNavigate } from 'react-router-dom';
-import {
-  createContext, useContext, useState,useEffect
-} from 'react';
-
-import * as productApi from '../API/productsApi'
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import * as productApi from '../API/productsApi';
 
 const ProductContext = createContext();
 
 function ProductContextProvider({ children }) {
-    const [productList, setProductList] = useState([]);
-    // const navigate = useNavigate()
+  const [productList, setProductList] = useState([]);
 
-    useEffect(() => {
-    const getAllProducts = async () =>{
-        try {
-            const res = await productApi.getAllProduct()
-            const products = res.data
-            setProductList(products)
-        // navigate('/Products')
-        } catch (error) {
-            console.log(error)
-        }
-     }
-    getAllProducts()
-    },[]);
-   
+  const fetchProducts = async (filters) => {
+    try {
+      const res = await productApi.getAllProducts(filters);
+      const products = res.data;
+      setProductList(products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const productObj = {productList}
+  useEffect(() => {
+    fetchProducts({});
+  }, []);
 
-    return (
-        <ProductContext.Provider value={productObj}>{children}</ProductContext.Provider>
-    )
+  const productObj = { productList, fetchProducts };
 
+  return (
+    <ProductContext.Provider value={productObj}>
+      {children}
+    </ProductContext.Provider>
+  );
 }
 
-export const useProduct = () => useContext(ProductContext)
-export {ProductContext}
-export default ProductContextProvider
-
+export const useProduct = () => useContext(ProductContext);
+export { ProductContext };
+export default ProductContextProvider;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../services/axios";
 import { API_END_POINT } from "../../services/env";
+import { Link } from "react-router-dom";
 
 const CreateAccount = () => {
   const [formData, setFormData] = useState({
@@ -133,9 +134,9 @@ const CreateAccount = () => {
         <div>
           <p>
             Already have an account?
-            <a href="/" className="text-black">
+            <Link to="/login" className="text-black">
               Sign In
-            </a>
+            </Link>
           </p>
         </div>
       </div>

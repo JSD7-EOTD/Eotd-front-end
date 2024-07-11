@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../services/axios";
 import Joi from "joi";
+import { Link } from "react-router-dom";
 
 const LoginComponent = () => {
   const schema = Joi.object({
@@ -85,7 +86,7 @@ const LoginComponent = () => {
           Login to your account
         </h2>
       </div>
-      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-8"onSubmit={handleSubmit}>
         <div>
           <label>Email or Username</label>
           <input
@@ -143,9 +144,7 @@ const LoginComponent = () => {
         <div>
           <p>
             Don't have an account?
-            <a href="/signup" className="text-black">
-              Sign Up
-            </a>
+            <Link to="/regis" className="text-black">Sign Up</Link>
           </p>
         </div>
       </div>

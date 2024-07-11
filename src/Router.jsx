@@ -8,7 +8,7 @@ import Loginpage from "./pages/Login/Login"
 
 import DisplayProduct from "./pages/DisplayProduct/DisplayProduct";
 import Register from "./pages/Register/Register";
-import CartPage from "./pages/Cart/CartPage";
+import CartPage from "./pages/Cart/CartPage"
 
 
 function Router() {

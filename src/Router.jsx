@@ -9,6 +9,7 @@ import Loginpage from "./pages/Login/Login";
 import DisplayProduct from "./pages/DisplayProduct/DisplayProduct";
 import Register from "./pages/Register/Register";
 import CartPage from "./pages/Cart/CartPage";
+import ConfirmAndPay from "./pages/ConfirmAndPay/ConfirmAndPay";
 
 function Router() {
   return (
@@ -22,6 +23,8 @@ function Router() {
       <Route path="/error" element={<ErrorPage />} />
       <Route path="/login" element={<Loginpage />} />
       <Route path="/regis" element={<Register />} />
+      <Route path="/checkout" element={<ConfirmAndPay />} />
+      <Route path="/continueShopping" element={<ProductPage />} />
     </Routes>
   );
 }

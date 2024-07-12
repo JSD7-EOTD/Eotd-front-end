@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/B_Navbar/Navbar";
 
 const CartPage = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
@@ -10,10 +9,8 @@ const CartPage = () => {
 
   return (
     <div>
-      <div>
-        <Navbar />
-      </div>
-      <div className="container mx-auto py-8 mt-24">
+      <div></div>
+      <div className="container mx-auto py-8">
         <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
         {cartItems.length === 0 ? (
           <p>Your cart is empty.</p>

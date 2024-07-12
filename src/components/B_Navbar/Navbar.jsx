@@ -3,6 +3,7 @@ import "boxicons";
 import logoGradient from "../../../public/images/icon/logoGradient.png";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { Outlet } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,8 @@ function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50 ">
-      <header className="bg-white shadow w-full h-[96px]">
+    <div className="flex flex-col min-h-screen">
+      <header className="bg-white shadow w-full h-[96px] fixed top-0 z-50">
         <div className="lg:px-36 md:px-16 sm:px-8 px-4 py-4 flex items-center justify-between w-full h-full">
           <div className="flex items-center xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-2 space-x-1">
             <img
@@ -228,6 +229,10 @@ function Navbar() {
           </div>
         )}
       </header>
+
+      <main className="flex-grow mt-[96px]">
+        <Outlet />
+      </main>
     </div>
   );
 }

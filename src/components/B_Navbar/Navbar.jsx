@@ -97,21 +97,30 @@ function Navbar() {
               >
                 <box-icon name="cart"></box-icon>
                 {cartItems.length > 0 && (
-                  <span className="badge badge-sm indicator-item">{cartItems.length}</span>
+                  <span className="badge badge-sm indicator-item">
+                    {cartItems.length}
+                  </span>
                 )}
               </button>
               {isCartDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-lg py-2">
-                  <h2 className="text-lg font-bold px-4 py-2 border-b">Cart Items</h2>
+                  <h2 className="text-lg font-bold px-4 py-2 border-b">
+                    Cart Items
+                  </h2>
                   {cartItems.length === 0 ? (
                     <p className="px-4 py-2">Your cart is empty.</p>
                   ) : (
                     <div>
                       {cartItems.map((item) => (
-                        <div key={item.id} className="flex items-center justify-between px-4 py-2 border-b">
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-between px-4 py-2 border-b"
+                        >
                           <div>
                             <p className="text-sm font-medium">{item.name}</p>
-                            <p className="text-sm text-gray-500">{item.new_price}$</p>
+                            <p className="text-sm text-gray-500">
+                              {item.new_price}$
+                            </p>
                           </div>
                           <button
                             className="text-red-500 hover:text-red-700"
@@ -192,13 +201,13 @@ function Navbar() {
                 </button>
               </div>
               <Link
-                to ="/"
+                to="/"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Home
               </Link>
               <Link
-                to ="/Products"
+                to="/Products"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Product

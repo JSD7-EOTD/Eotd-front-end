@@ -2,7 +2,7 @@ import React from "react";
 import LogoPicture from "../../components/D_LogoPicture/LogoPicture";
 import LoginComponent from "../../components/D_Login/LoginComponent";
 
-const Login = () => {
+const Loginpage = () => {
   return (
     <div className="md:flex h-[100vh]">
       <LogoPicture />
@@ -11,4 +11,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Loginpage;

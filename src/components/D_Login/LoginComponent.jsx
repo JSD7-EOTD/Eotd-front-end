@@ -75,6 +75,9 @@ const LoginComponent = () => {
             {isLoading ? "Logging In..." : "Login"}
           </button>
         </div>
+        <Link to={"/"} className="text-center">
+          Back to home
+        </Link>
       </form>
       <div className="flex flex-col items-center gap-8 text-zinc-400 text-sm">
         <div>

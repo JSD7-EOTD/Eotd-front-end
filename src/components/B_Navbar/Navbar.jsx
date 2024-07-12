@@ -3,6 +3,7 @@ import "boxicons";
 import logoGradient from "../../../public/images/icon/logoGradient.png";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 import { Outlet } from "react-router-dom";
 
 function Navbar() {
@@ -11,6 +12,7 @@ function Navbar() {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
   const { cartItems, removeFromCart } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -38,7 +40,7 @@ function Navbar() {
               alt="Logo"
               className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
             />
-            <nav className=" hidden md:flex space-x-1 lg:space-x-4">
+            <nav className="hidden md:flex space-x-1 lg:space-x-4">
               <Link
                 to="/"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
@@ -63,12 +65,14 @@ function Navbar() {
               >
                 Contact
               </a>
-              <a
-                href="#"
-                className="hidden text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-              >
-                Admin
-              </a>
+              {user && user.isAdmin && (
+                <a
+                  href="https://eotd-admin.vercel.app/"
+                  className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
+                >
+                  Admin
+                </a>
+              )}
             </nav>
           </div>
           <div className="hidden md:flex items-center space-x-4 relative">
@@ -144,33 +148,44 @@ function Navbar() {
               )}
             </div>
             <div className="relative">
-              <button
-                className="btn btn-ghost btn-circle text-info-content"
-                onClick={toggleUserDropdown}
-              >
-                <box-icon name="user"></box-icon>
-              </button>
-              {isUserDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2">
-                  <Link
-                    to="/users"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              {user ? (
+                <>
+                  <button
+                    className="btn btn-ghost btn-circle text-info-content"
+                    onClick={toggleUserDropdown}
                   >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/Settings"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Settings
-                  </Link>
-                  <Link
-                    to="/Logout"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </Link>
-                </div>
+                    <box-icon name="user"></box-icon>
+                  </button>
+                  {isUserDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2">
+                      <Link
+                        to="/users"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        to="/Settings"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Settings
+                      </Link>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => {
+                          logout();
+                          toggleUserDropdown();
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link to="/Login" className="text-xl font-semibold">
+                  SIGN IN
+                </Link>
               )}
             </div>
             <button
@@ -225,6 +240,14 @@ function Navbar() {
               >
                 Contact
               </a>
+              {user && user.isAdmin && (
+                <a
+                  href="https://eotd-admin.vercel.app/"
+                  className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
+                >
+                  Admin
+                </a>
+              )}
             </nav>
           </div>
         )}

@@ -25,11 +25,11 @@ function Router() {
         <Route path="/Cart" element={<CartPage />} />
         <Route path="/status" element={<SuccessPage />} />
         <Route path="/error" element={<ErrorPage />} />
-        <Route path="/login" element={<Loginpage />} />
-        <Route path="/regis" element={<Register />} />
         <Route path="/checkout" element={<ConfirmAndPay />} />
         <Route path="/continueShopping" element={<ProductPage />} />
       </Route>
+      <Route path="/login" element={<Loginpage />} />
+      <Route path="/regis" element={<Register />} />
     </Routes>
   );
 }

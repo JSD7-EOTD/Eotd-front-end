@@ -2,7 +2,7 @@ import React from "react";
 
 function ProductHero() {
   return (
-    <section className="mt-24 relative flex justify-center items-center z-10">
+    <section className="relative flex justify-center items-center z-10">
       <div className="absolute lg:bottom-24 bottom-24 xl:mb-28 xl:mr-[604px]">
         <h1 className="font-bold text-[#EDBF9A] text-[32px] px-4 lg:text-[64px] lg:w-2/3 ">
           PUEY PUEY DESIGN

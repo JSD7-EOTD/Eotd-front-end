@@ -3,6 +3,7 @@ import "boxicons";
 import logoGradient from "../../../public/images/icon/logoGradient.png";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { Outlet } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,8 @@ function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50 ">
-      <header className="bg-white shadow w-full h-[96px]">
+    <div className="flex flex-col min-h-screen">
+      <header className="bg-white shadow w-full h-[96px] fixed top-0 z-50">
         <div className="lg:px-36 md:px-16 sm:px-8 px-4 py-4 flex items-center justify-between w-full h-full">
           <div className="flex items-center xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-2 space-x-1">
             <img
@@ -97,21 +98,30 @@ function Navbar() {
               >
                 <box-icon name="cart"></box-icon>
                 {cartItems.length > 0 && (
-                  <span className="badge badge-sm indicator-item">{cartItems.length}</span>
+                  <span className="badge badge-sm indicator-item">
+                    {cartItems.length}
+                  </span>
                 )}
               </button>
               {isCartDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-lg py-2">
-                  <h2 className="text-lg font-bold px-4 py-2 border-b">Cart Items</h2>
+                  <h2 className="text-lg font-bold px-4 py-2 border-b">
+                    Cart Items
+                  </h2>
                   {cartItems.length === 0 ? (
                     <p className="px-4 py-2">Your cart is empty.</p>
                   ) : (
                     <div>
                       {cartItems.map((item) => (
-                        <div key={item.id} className="flex items-center justify-between px-4 py-2 border-b">
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-between px-4 py-2 border-b"
+                        >
                           <div>
                             <p className="text-sm font-medium">{item.name}</p>
-                            <p className="text-sm text-gray-500">{item.new_price}$</p>
+                            <p className="text-sm text-gray-500">
+                              {item.new_price}$
+                            </p>
                           </div>
                           <button
                             className="text-red-500 hover:text-red-700"
@@ -192,13 +202,13 @@ function Navbar() {
                 </button>
               </div>
               <Link
-                to ="/"
+                to="/"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Home
               </Link>
               <Link
-                to ="/Products"
+                to="/Products"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 Product
@@ -219,6 +229,10 @@ function Navbar() {
           </div>
         )}
       </header>
+
+      <main className="flex-grow mt-[96px]">
+        <Outlet />
+      </main>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import QRpayment from "../../../public/images/icon/QRpayment.png";
 import "boxicons";
+import { Link } from "react-router-dom";
 
 const ConfirmAndPayCommponent = () => {
   return (
@@ -70,10 +71,38 @@ const ConfirmAndPayCommponent = () => {
               </div>
               <div className="space-y-4 md:flex md:flex-col md:justify-around md:py-4">
                 <div className="flex  justify-center md:gap-8 ">
-                  <div className="shadow-md hover:bg-zinc-200"><button><box-icon type='logo' name='visa' size="72px" ></box-icon></button></div>
-                  <div className="shadow-md hover:bg-zinc-200"><button><box-icon name='mastercard' type='logo' size="72px" ></box-icon></button></div>
-                  <div className="shadow-md hover:bg-zinc-200"><button><box-icon name='paypal' type='logo' size="72px" ></box-icon></button></div>
-                  <div className="shadow-md hover:bg-zinc-200"><button><box-icon name='credit-card-alt' type='solid' size="72px" ></box-icon></button></div>
+                  <div className="shadow-md hover:bg-zinc-200">
+                    <button>
+                      <box-icon type="logo" name="visa" size="72px"></box-icon>
+                    </button>
+                  </div>
+                  <div className="shadow-md hover:bg-zinc-200">
+                    <button>
+                      <box-icon
+                        name="mastercard"
+                        type="logo"
+                        size="72px"
+                      ></box-icon>
+                    </button>
+                  </div>
+                  <div className="shadow-md hover:bg-zinc-200">
+                    <button>
+                      <box-icon
+                        name="paypal"
+                        type="logo"
+                        size="72px"
+                      ></box-icon>
+                    </button>
+                  </div>
+                  <div className="shadow-md hover:bg-zinc-200">
+                    <button>
+                      <box-icon
+                        name="credit-card-alt"
+                        type="solid"
+                        size="72px"
+                      ></box-icon>
+                    </button>
+                  </div>
                 </div>
                 <div className="flex justify-center h-80 md:h-auto">
                   <img src={QRpayment} />
@@ -103,9 +132,13 @@ const ConfirmAndPayCommponent = () => {
                 <p className="text-black">$40</p>
               </div>
             </div>
-            <button className="rounded-3xl bg bg-[#BD8356] hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 p-2 px-6 text-white w-1/2">
+
+            <Link
+              to="/status"
+              className="text-center rounded-3xl bg bg-[#BD8356] hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 p-2 px-6 text-white w-1/2"
+            >
               Confirm and pay
-            </button>
+            </Link>
           </div>
         </div>
       </div>

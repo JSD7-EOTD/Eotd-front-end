@@ -1,53 +1,19 @@
-import React, { useState } from "react";
-import axios from "../../services/axios";
-import { API_END_POINT } from "../../services/env";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const CreateAccount = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { formData, handleChange, register, error, isLoading } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const response = await axios.post("/api/auth/register", formData);
-      console.log("Registration response:", response);
-      console.log("Registration successful:", response.data);
-      setFormData({ username: "", email: "", password: "" });
-      setError("");
-    } catch (error) {
-      console.error("Registration error:", error);
-      if (error.response) {
-        setError(error.response.data.message || "Registration failed");
-      } else if (error.request) {
-        setError("Network error. Please try again.");
-      } else {
-        setError("Unexpected error. Please try again later.");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    await register();
   };
 
   return (
     <div className="p-6 flex flex-col gap-8 font-semibold text-zinc-600 md:w-1/2 md:flex md:place-content-center h-[100vh]">
       <div>
-        <h2 className="text-xl font-bold text-[#794222]">
-          Create your account
-        </h2>
+        <h2 className="text-xl font-bold text-[#794222]">Create your account</h2>
         <p className="text-[#BD8356]">It's free and easy</p>
       </div>
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
@@ -87,20 +53,11 @@ const CreateAccount = () => {
         <div className="text-zinc-400 -white">
           <input type="checkbox" className="" />
           By creating an account means you agree to the{" "}
-          <a href="/" className="text-black">
-            Terms
-          </a>{" "}
-          and{" "}
-          <a href="/" className="text-black">
-            Conditions
-          </a>
-          , and our{" "}
-          <a href="/" className="text-black">
-            Privacy Policy.
-          </a>
+          <a href="/" className="text-black">Terms</a> and{" "}
+          <a href="/" className="text-black">Conditions</a>, and our{" "}
+          <a href="/" className="text-black">Privacy Policy.</a>
         </div>
         {error && <p className="text-red-500">{error}</p>}
-
         <div className="bg-[#BD8356] hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 text-white rounded-full text-center p-2 w-full">
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Signing Up..." : "Sign Up"}
@@ -121,22 +78,15 @@ const CreateAccount = () => {
                 <box-icon name="apple" type="logo" color="#BD8356"></box-icon>
               </li>
               <li>
-                <box-icon
-                  name="facebook"
-                  type="logo"
-                  color="#BD8356"
-                ></box-icon>
+                <box-icon name="facebook" type="logo" color="#BD8356"></box-icon>
               </li>
             </ul>
           </nav>
         </div>
-
         <div>
           <p>
             Already have an account?
-            <Link to="/login" className="text-black">
-              Sign In
-            </Link>
+            <Link to="/login" className="text-black">Sign In</Link>
           </p>
         </div>
       </div>

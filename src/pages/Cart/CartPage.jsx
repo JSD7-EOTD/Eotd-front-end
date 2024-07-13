@@ -3,9 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
-
-  const total = cartItems.reduce((acc, item) => acc + item.new_price, 0);
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, totalPrice } = useContext(CartContext);
 
   return (
     <div>
@@ -37,16 +35,31 @@ const CartPage = () => {
                     </p>
                   </div>
                 </div>
-                <button
-                  className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-                  onClick={() => removeFromCart(item.id)}
-                >
-                  Remove
-                </button>
+                <div className="flex items-center space-x-4">
+                  <button
+                    className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
+                    onClick={() => decreaseQuantity(item.id)}
+                  >
+                    -
+                  </button>
+                  <p>{item.quantity}</p>
+                  <button
+                    className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
+                    onClick={() => increaseQuantity(item.id)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             ))}
             <div className="flex justify-between items-center border-t pt-4 mt-4">
-              <h2 className="text-2xl font-bold">Total: {total}$</h2>
+              <h2 className="text-2xl font-bold">Total: {totalPrice}$</h2>
               <Link
                 to="/checkout"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"

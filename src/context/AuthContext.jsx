@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null); // Add userId state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +34,7 @@ export const AuthProvider = ({ children }) => {
         },
       });
       setUser(response.data.user);
+      setUserId(response.data.user._id); // Set userId from response
     } catch (error) {
       console.error('Failed to fetch user data', error);
       logout(); 
@@ -52,8 +54,9 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post("/api/auth/login", formData);
       console.log("Login response:", response.data);
 
-      const { token } = response.data;
+      const { token, user } = response.data;
       setToken(token);
+      setUserId(user._id); // Set userId from login response
       localStorage.setItem("token", token);
       setFormData({ identifier: "", password: "" });
       setError("");
@@ -98,12 +101,13 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
+    setUserId(null); // Reset userId on logout
     localStorage.removeItem("token");
   };
 
   return (
     <AuthContext.Provider
-      value={{ formData, handleChange, login, register, logout, error, isLoading, user, token }}
+      value={{ formData, handleChange, login, register, logout, error, isLoading, user, token, userId }} // Add userId to the context value
     >
       {children}
     </AuthContext.Provider>

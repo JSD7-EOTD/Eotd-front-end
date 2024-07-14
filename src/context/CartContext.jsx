@@ -1,54 +1,72 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { useAuth } from "./AuthContext"; // Assuming AuthContext is in the same directory
 
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCartItems = localStorage.getItem('cartItems');
-    return savedCartItems ? JSON.parse(savedCartItems) : [];
-  });
-  const [totalPrice, setTotalPrice] = useState(() => {
-    const savedTotalPrice = localStorage.getItem('totalPrice');
-    return savedTotalPrice ? JSON.parse(savedTotalPrice) : 0;
-  });
+  const { user } = useAuth(); // Retrieve user from AuthContext
+  const userId = user?._id; // Extract user ID from user object
+  const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    const total = cartItems.reduce((acc, item) => acc + (item.new_price * item.quantity), 0);
-    setTotalPrice(total);
-    localStorage.setItem('totalPrice', JSON.stringify(total));
-  }, [cartItems]);
+    console.log("User ID:", userId);
+    if (userId) {
+      // Fetch the cart items from the backend when the component mounts
+      const fetchCart = async () => {
+        try {
+          const response = await axios.get(`/cart/${userId}`);
+          setCartItems(response.data.products);
+          const total = response.data.products.reduce((acc, item) => acc + (item.productId.new_price * item.quantity), 0);
+          setTotalPrice(total);
+        } catch (error) {
+          console.error("Failed to fetch cart:", error);
+        }
+      };
 
-  const addToCart = (product, quantity = 1) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find(item => item.id === product.id);
-      if (existingItem) {
-        return prevItems.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
-        );
-      }
-      return [...prevItems, { ...product, quantity }];
-    });
+      fetchCart();
+    } else {
+      console.warn("User ID is not defined");
+    }
+  }, [userId]);
+
+  const addToCart = async (product, quantity = 1) => {
+    console.log(product)
+    try {
+      const response = await axios.post(`/cart/${userId}/add`, {
+        userId,
+        products: [{ productId: product._id, quantity }]
+      });
+      setCartItems(response.data.products);
+      const total = response.data.products.reduce((acc, item) => acc + (item.productId.new_price * item.quantity), 0);
+      setTotalPrice(total);
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
   };
 
-  const removeFromCart = (productId) => {
-    setCartItems((prevItems) => prevItems.filter(item => item.id !== productId));
+  const removeFromCart = async (productId) => {
+    try {
+      const response = await axios.delete(`/cart/${userId}/remove/${productId}`);
+      setCartItems(response.data.products);
+      const total = response.data.products.reduce((acc, item) => acc + (item.productId.new_price * item.quantity), 0);
+      setTotalPrice(total);
+    } catch (error) {
+      console.error("Failed to remove from cart:", error);
+    }
   };
 
-  const increaseQuantity = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.map(item =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+  const increaseQuantity = async (productId) => {
+    const product = cartItems.find(item => item.productId._id === productId);
+    await addToCart(product.productId, 1);
   };
 
-  const decreaseQuantity = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.map(item =>
-        item.id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
-      )
-    );
+  const decreaseQuantity = async (productId) => {
+    const product = cartItems.find(item => item.productId._id === productId);
+    if (product.quantity > 1) {
+      await addToCart(product.productId, -1);
+    }
   };
 
   return (

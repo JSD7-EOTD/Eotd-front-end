@@ -3,11 +3,16 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, totalPrice } = useContext(CartContext);
+  const {
+    cartItems,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    totalPrice,
+  } = useContext(CartContext);
 
   return (
     <div>
-      <div></div>
       <div className="container mx-auto py-8">
         <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
         {cartItems.length === 0 ? (
@@ -16,7 +21,7 @@ const CartPage = () => {
           <div className="flex flex-col space-y-4">
             {cartItems.map((item) => (
               <div
-                key={item.id}
+                key={item.productId}
                 className="flex items-center justify-between border p-4 rounded-lg shadow-lg"
               >
                 <div className="flex items-center space-x-4">
@@ -38,20 +43,20 @@ const CartPage = () => {
                 <div className="flex items-center space-x-4">
                   <button
                     className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-                    onClick={() => decreaseQuantity(item.id)}
+                    onClick={() => decreaseQuantity(item.productId)}
                   >
                     -
                   </button>
                   <p>{item.quantity}</p>
                   <button
                     className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-                    onClick={() => increaseQuantity(item.id)}
+                    onClick={() => increaseQuantity(item.productId)}
                   >
                     +
                   </button>
                   <button
                     className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.productId)}
                   >
                     Remove
                   </button>

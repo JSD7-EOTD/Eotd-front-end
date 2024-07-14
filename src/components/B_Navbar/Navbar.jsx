@@ -11,7 +11,7 @@ function Navbar() {
   const [isSearchBarOpen, setSearchBarOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, addToCart } = useContext(CartContext); // Include addToCart from context
   const { user, logout } = useContext(AuthContext);
 
   const toggleMenu = () => {
@@ -118,7 +118,7 @@ function Navbar() {
                     <div>
                       {cartItems.map((item) => (
                         <div
-                          key={item.id}
+                          key={item.productId}
                           className="flex items-center justify-between px-4 py-2 border-b"
                         >
                           <div>
@@ -129,7 +129,7 @@ function Navbar() {
                           </div>
                           <button
                             className="text-red-500 hover:text-red-700"
-                            onClick={() => removeFromCart(item.id)}
+                            onClick={() => removeFromCart(item.productId)}
                           >
                             Remove
                           </button>

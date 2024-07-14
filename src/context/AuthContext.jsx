@@ -18,13 +18,26 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
     const storedToken = localStorage.getItem("token");
-    if (storedUser && storedToken) {
-      setUser(JSON.parse(storedUser));
+    if (storedToken) {
       setToken(storedToken);
+      fetchUserData(storedToken);
     }
   }, []);
+
+  const fetchUserData = async (token) => {
+    try {
+      const response = await axios.get('/api/auth/user', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(response.data.user);
+    } catch (error) {
+      console.error('Failed to fetch user data', error);
+      logout(); 
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -39,14 +52,13 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post("/api/auth/login", formData);
       console.log("Login response:", response.data);
 
-      const { user, token } = response.data;
-      setUser(user);
+      const { token } = response.data;
       setToken(token);
-      localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
       setFormData({ identifier: "", password: "" });
       setError("");
       navigate("/");
+      fetchUserData(token); 
     } catch (error) {
       console.error("Login error:", error);
       if (error.response) {
@@ -86,7 +98,6 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
 

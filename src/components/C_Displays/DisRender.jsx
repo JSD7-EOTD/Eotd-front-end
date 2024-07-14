@@ -1,120 +1,122 @@
-import React, { useState, useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export function MatRender() {
-return (
-    <div className=" ">
-    <div className="grid grid-cols-2 gap-4 md:mb-4">
+  return (
+    <div>
+      <div className="grid grid-cols-2 gap-4 md:mb-4">
         {/* Cell 1 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex pr-[55px]">
-        <i>
+          <i>
             <box-icon
-            name="leaf"
-            color="#bd8356"
-            border="circle"
-            size="md"
+              name="leaf"
+              color="#bd8356"
+              border="circle"
+              size="md"
             ></box-icon>
-        </i>
-        <p className="p-2">Material_1</p>
+          </i>
+          <p className="p-2">Material_1</p>
         </div>
         {/* Cell 2 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex  pr-[55px]">
-        <i>
+          <i>
             <box-icon
-            name="blanket"
-            type="solid"
-            color="#bd8356"
-            border="circle"
-            size="md"
+              name="blanket"
+              type="solid"
+              color="#bd8356"
+              border="circle"
+              size="md"
             ></box-icon>
-        </i>
-        <p className="p-2">Material_2</p>
+          </i>
+          <p className="p-2">Material_2</p>
         </div>
         {/* Cell 3 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex  pr-[55px]">
-        <i>
+          <i>
             <box-icon
-            name="leaf"
-            color="#bd8356"
-            border="circle"
-            size="md"
+              name="leaf"
+              color="#bd8356"
+              border="circle"
+              size="md"
             ></box-icon>
-        </i>
-        <p className="p-2">Material_1</p>
+          </i>
+          <p className="p-2">Material_1</p>
         </div>
         {/* Cell 4 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex   pr-[55px]">
-        <i>
+          <i>
             <box-icon
-            name="leaf"
-            color="#bd8356"
-            border="circle"
-            size="md"
+              name="leaf"
+              color="#bd8356"
+              border="circle"
+              size="md"
             ></box-icon>
-        </i>
-        <p className="p-2">Material_1</p>
+          </i>
+          <p className="p-2">Material_1</p>
         </div>
         {/* Cell 5 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex   pr-[55px]">
-        <i>
+          <i>
             <box-icon
-            name="leaf"
-            color="#bd8356"
-            border="circle"
-            size="md"
+              name="leaf"
+              color="#bd8356"
+              border="circle"
+              size="md"
             ></box-icon>
-        </i>
-        <p className="p-2">Material_1</p>
+          </i>
+          <p className="p-2">Material_1</p>
         </div>
         {/* Cell 6 */}
         <div className="w-[150px] h-[55px] md:w-[250px] md:h-[55px] bg-white flex   pr-[55px]"></div>
-    </div>
-    <div className='flex pl-2 gap-4 justify-center md:justify-start'>
+      </div>
+      <div className="flex pl-2 gap-4 justify-center md:justify-start">
         <box-icon name="recycle" color="#a3ba9a"></box-icon>
         <box-icon name="dog" type="solid" color="#917d73"></box-icon>
         <box-icon name="cat" type="solid" color="#917d73"></box-icon>
         <box-icon type="solid" name="face" color="#917d73"></box-icon>
+      </div>
     </div>
-    </div>
-);
+  );
 }
 
 export function Options() {
-    return (
+  return (
     <div className="mt-6 flex justify-center">
-        <div className="flex space-x-2">
+      <div className="flex space-x-2">
         <box-icon
-            name="square-rounded"
-            type="solid"
-            color="#b1b5c3"
-            size="lg"
+          name="square-rounded"
+          type="solid"
+          color="#b1b5c3"
+          size="lg"
         ></box-icon>
         <box-icon
-            name="square-rounded"
-            type="solid"
-            color="#edbf9a"
-            size="lg"
+          name="square-rounded"
+          type="solid"
+          color="#edbf9a"
+          size="lg"
         ></box-icon>
         <box-icon
-            name="square-rounded"
-            type="solid"
-            color="#BD8356"
-            size="lg"
+          name="square-rounded"
+          type="solid"
+          color="#BD8356"
+          size="lg"
         ></box-icon>
         <box-icon
-            name="square-rounded"
-            type="solid"
-            color="#794222"
-            size="lg"
+          name="square-rounded"
+          type="solid"
+          color="#794222"
+          size="lg"
         ></box-icon>
-        </div>
+      </div>
     </div>
-    );
+  );
 }
 
 export function Addbutton({ product }) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -146,10 +148,16 @@ export function Addbutton({ product }) {
         </button>
       </div>
       <div className="flex items-center space-x-4 mt-10 justify-center md:justify-start">
-        <button className="text-white bg-yellow-700 lg:text-xl px-4 py-2 rounded-2xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 whitespace-nowrap">
+        <button
+          onClick={() => {
+            handleAddToCart();
+            navigate("/Cart");
+          }}
+          className="text-white bg-yellow-700 lg:text-xl px-4 py-2 rounded-2xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 whitespace-nowrap"
+        >
           Order Now
         </button>
-        <button 
+        <button
           onClick={handleAddToCart}
           className="text-white bg-yellow-700 lg:text-xl px-4 py-2 rounded-2xl hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1 whitespace-nowrap"
         >

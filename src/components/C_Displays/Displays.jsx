@@ -18,7 +18,7 @@ export default function Displays() {
 
   async function getProduct() {
     try {
-      const response = await productApi.getOneProduct(_id)
+      const response = await productApi.getOneProduct(_id);
       const data = await response.data;
       setProduct(data);
       console.log(product);

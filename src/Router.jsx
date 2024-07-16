@@ -13,6 +13,7 @@ import ConfirmAndPay from "./pages/ConfirmAndPay/ConfirmAndPay";
 
 // Navbar import
 import Navbar from "./components/B_Navbar/Navbar";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/checkout" element={<ConfirmAndPay />} />
         <Route path="/continueShopping" element={<ProductPage />} />
+        <Route path="/about" element={<AboutUs />} />
       </Route>
       <Route path="/login" element={<Loginpage />} />
       <Route path="/regis" element={<Register />} />

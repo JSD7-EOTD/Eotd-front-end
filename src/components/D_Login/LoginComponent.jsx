@@ -39,7 +39,7 @@ const LoginComponent = () => {
     // }
     await login();
   };
-  console.log(user)
+  
 
   return (
     <div className="p-6 flex flex-col gap-8 font-semibold text-zinc-600 md:w-1/2 md:flex md:place-content-center h-[100vh]">

@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post("/api/auth/login", formData);
-      console.log("Login response:", response.data);
+      // console.log("Login response:", response.data);
 
       const { token, user } = response.data;
       setToken(token);
@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.post("/api/auth/register", formData);
-      console.log("Registration response:", response.data);
+      // console.log("Registration response:", response.data);
 
       setFormData({ username: "", email: "", password: "" });
       setError("");

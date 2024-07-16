@@ -14,14 +14,14 @@ export default function Displays() {
   const { _id } = useParams();
   const { addToCart } = useContext(CartContext); // Use the CartContext
 
-  console.log(_id);
+  
 
   async function getProduct() {
     try {
       const response = await productApi.getOneProduct(_id);
       const data = await response.data;
       setProduct(data);
-      console.log(product);
+      
     } catch (error) {
       console.error("Failed", error);
     }

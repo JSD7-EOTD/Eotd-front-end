@@ -13,7 +13,7 @@ const Hero2 = () => {
 
       <div className="w-full md:w-1/2 p-5 space-y-6 md:space-y-4 flex flex-col items-center">
         <h1 className="text-4xl md:text-[40px]   text-yellow-900 text-center font-bold">
-          เพื่อนซี่สีขา
+          เพื่อนซี้สี่ขา
           <br />
           บ้านหมาคุณภาพ
         </h1>

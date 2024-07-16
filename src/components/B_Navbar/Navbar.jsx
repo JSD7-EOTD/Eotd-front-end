@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSearchBarOpen, setSearchBarOpen] = useState(false);
+  const [isSearchBarOpen, setSearchBarOpen] = useState(true);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
   const { cartItems, removeFromCart, addToCart } = useContext(CartContext); // Include addToCart from context
@@ -53,18 +53,12 @@ function Navbar() {
               >
                 Product
               </Link>
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
               >
                 About Us
-              </a>
-              <a
-                href="#"
-                className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
-              >
-                Contact
-              </a>
+              </Link>
               {user && user.isAdmin && (
                 <a
                   href="https://eotd-admin.vercel.app/"
@@ -76,7 +70,7 @@ function Navbar() {
             </nav>
           </div>
           <div className="hidden md:flex items-center space-x-4 relative">
-            <div className="relative flex items-center">
+            <div className="hidden relative  items-center">
               <input
                 type="text"
                 placeholder="Search..."
@@ -228,12 +222,12 @@ function Navbar() {
               >
                 Product
               </Link>
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"
               >
                 About Us
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block text-yellow-700 hover:bg-[#794222] hover:text-white text-xl px-2 py-1 rounded text-center transition-all duration-300 transform hover:translate-x-1"

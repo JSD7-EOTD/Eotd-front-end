@@ -36,7 +36,7 @@ const CartPage = () => {
                       {item.description || "No description available"}
                     </p>
                     <p className="text-[#BD8356] font-bold">
-                      {item.new_price}$
+                    ${item.new_price}
                     </p>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ const CartPage = () => {
               </div>
             ))}
             <div className="flex justify-between items-center border-t pt-4 mt-4">
-              <h2 className="text-2xl font-bold">Total: {totalPrice}$</h2>
+              <h2 className="text-2xl font-bold">Total: ${totalPrice}</h2>
               <Link
                 to="/checkout"
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"

@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import delivery from "../../../public/images/delivery.png"
 
 const Success = () => {
   return (
     <div className="md:flex relative p-5 md:p-40 place-content-center gap-5 h-[677px]">
       <div className="flex justify-center md:block mb-5 md:mb-0 self-center">
         <img
-          src="../../../public/images/delivery.png"
+          src={delivery}
           alt="order success"
           className="h-[100px] md:h-[200px]"
         />

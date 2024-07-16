@@ -27,7 +27,7 @@ function CardMapping() {
               <p className="text-gray-600 mb-4">{product.description || "description"}</p>
             </div>
             <div className="card-actions flex justify-between items-center mt-auto">
-              <p className="text-xl font-bold text-[#BD8356]">{product.new_price}$</p>
+              <p className="text-xl font-bold text-[#BD8356]">${product.new_price}</p>
               <button
                 className="text-yellow-700 lg:text-xl px-2 py-1 rounded hover:bg-gradient-to-r from-[#794222] to-[#BD8356] hover:text-white transition-all duration-300 transform hover:translate-x-1"
                 onClick={() => addToCart(product)}
